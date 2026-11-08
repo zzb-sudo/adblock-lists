@@ -1,0 +1,420 @@
+! Title: 国内外广告精准拦截 (AdGuard Home 全平台完善版)
+! Description: 纯域名规则，在v1.4基础上补入爱奇艺/B站/QQ音乐的自有广告域名，并整合车来了规则
+! Version: 1.5
+! Last modified: 2026-11-08
+! 语法依据: AdGuard DNS filtering syntax，核心格式 ||domain^
+! 兼容性: 不含 $third-party / domain= / 复杂正则，适配 AdGuard Home DNS 过滤层
+! 警告: 第7节中标注"有损"的规则可能影响对应平台的部分功能，导入后请观察
+
+
+! ============================================================
+! 一、字节跳动系（穿山甲 / 抖音 / 头条 / Gromore）
+! ============================================================
+||pangolin.snssdk.com^
+||pangolin-sdk-toutiao.com^
+||pangolin-sdk-toutiao1.com^
+||pangolin-sdk-toutiao-b.com^
+||api-access.pangolin-sdk-toutiao.com^
+||pglstatp-toutiao.com^
+||is.snssdk.com^
+||i.snssdk.com^
+||i-lq.snssdk.com^
+||gurd.snssdk.com^
+||bds.snssdk.com^
+||sdfp.snssdk.com^
+||ad.toutiao.com^
+||ad.zijieapi.com^
+||ad.partner.gifshow.com^
+||adshare.toutiao.com^
+||dm.bytedance.com^
+||dm.pstatp.com^
+||dm.toutiao.com^
+||a3.pstatp.com^
+||a3.bytecdn.cn^
+||ad.api.3g.youku.com^
+||ad.api.moji.com^
+||log.snssdk.com^
+||log-hl.snssdk.com^
+||xlog.snssdk.com^
+||mon.snssdk.com^
+||abtest-ch.snssdk.com^
+||gromore.com^
+||gromore.cn^
+
+
+! ============================================================
+! 二、腾讯系（优量汇 / 广点通）
+! ============================================================
+||mi.gdt.qq.com^
+||c.gdt.qq.com^
+||v.gdt.qq.com^
+||q.i.gdt.qq.com^
+||canvas.gdt.qq.com^
+||pgdt.gtimg.cn^
+||pingma.qq.com^
+||ad.qq.com^
+||e.qq.com^
+||sdk.e.qq.com^
+||ad.tencentmusic.com^
+||adcdn.tencentmusic.com^
+||adclick.tencentmusic.com^
+||adexpo.tencentmusic.com^
+||adfilter.imtt.qq.com^
+||splashqqlive.gtimg.cn^
+
+
+! ============================================================
+! 三、百度联盟
+! ============================================================
+||mobads.baidu.com^
+||mobads-log.baidu.com^
+||als.baidu.com^
+||cpro.baidu.com^
+||cpro.baidustatic.com^
+||caclick.baidu.com^
+||ubmcmm.baidustatic.com^
+||cpu.baidu.com^
+
+
+! ============================================================
+! 四、阿里系（阿里妈妈 / Tanx / 电商广告追踪）
+! ============================================================
+||alimama.cn^
+||afpapi.alimama.com^
+||p.tanx.com^
+||tanx.com^
+||adashbc.ut.taobao.com^
+||adashx.m.taobao.com^
+||adashxgc.ut.taobao.com^
+||adash.man.aliyuncs.com^
+||click.simba.taobao.com^
+
+
+! ============================================================
+! 五、手机厂商广告与追踪（小米 / OPPO / vivo / 华为 / 苹果 / 三星）
+! ============================================================
+
+! ---------- 小米 ----------
+||api.ad.xiaomi.com^
+||api.ad.intl.xiaomi.com^
+||diagnosis.ad.xiaomi.com^
+||tracking.intl.miui.com^
+||a0.app.xiaomi.com^
+
+! ---------- OPPO / Realme / OnePlus (HeyTap) ----------
+||sms.ads.heytapmobi.com^
+||data.sms.heytapmobi.com^
+||adx-in.ads.heytapmobile.com^
+||dragate.dc.oppomobile.com^
+||dragate-in-dc.heytapmobile.com^
+||stat-in.dc.oppomobile.com^
+||conf-in.dc.heytapmobi.com^
+||conff.dc.oppomobile.com^
+||confe.dc.oppomobile.com^
+||moa-upload-online.coloros.com^
+||mdp-appconf-sg.heytapdl.com^
+||heytapdl.com^
+||heytapmobile.com^
+||omes-sec.heytapmobile.com^
+||httpdns-push.heytapmobile.com^
+||allawnos.com^
+||allawntech.com^
+||esa-reg-eup.myoppo.com^
+
+! ---------- vivo ----------
+||ads-marketing-vivofs.vivo.com.cn^
+
+! ---------- 华为广告（仅限广告专用子域，不碰主域） ----------
+||rnd-aresocean-commercial.huawei.com^
+||rnd-cbgpas01.huawei.com^
+
+! ---------- 苹果遥测 ----------
+||metrics.icloud.com^
+||xp.apple.com^
+
+! ---------- 三星广告与遥测 ----------
+||samsungads.com^
+||smetrics.samsung.com^
+
+
+! ============================================================
+! 六、其他国内广告联盟 / 广告 SDK
+! ============================================================
+||open.e.kuaishou.com^
+||addata.jd.com^
+||bdsp.x.jd.com^
+||ad.weibo.com^
+||adimg.uve.weibo.com^
+||ads-img-al.xhscdn.com^
+||ads-img-qc.xhscdn.com^
+||adproxy.autohome.com.cn^
+||adm3.autoimg.cn^
+||applogapi.autohome.com^
+||collectionpv.che168.com^
+||ad.ximalaya.com^
+||ad.qingting.fm^
+||ad-cdn.qingting.fm^
+||adp.atm.youku.com^
+||count.atm.youku.com^
+||adapi.izuiyou.com^
+||adapi.yynetwk.com^
+||api.1rtb.net^
+||admobile.top^
+||domob.cn^
+||duomeng.cn^
+||ad.10010.com^
+||ad.abchina.com^
+||adcdn.pingan.com^
+
+
+! ============================================================
+! 七、国内独立 App 广告域名（含车来了/爱奇艺/B站/QQ音乐有损规则）
+! ============================================================
+
+! ---------- 车来了（有损，观察核心查询功能） ----------
+||atrace.chelaile.net.cn^
+||logs.chelaile.net.cn^
+
+! ---------- 爱奇艺（有损，高风险，可能影响视频播放） ----------
+! 验证显示屏蔽其广告域名可能导致视频无法播放，务必谨慎
+||a.ckm.iqiyi.com^
+||ad.m.iqiyi.com^
+||afp.iqiyi.com^
+||api.cupid.iqiyi.com^
+||cupid.iqiyi.com^
+||t7z.cupid.iqiyi.com^
+||tpa-hcdn.iqiyi.com^
+
+! ---------- B站（有损，主要影响PCDN与部分广告接口） ----------
+! PCDN域名屏蔽后通常回落正常CDN；部分接口可能承载非广告功能
+||mcdn.bilivideo.cn^
+||szbdyd.com^
+||cm.bilibili.com^
+
+! ---------- QQ音乐（有损，中等风险） ----------
+! 补入此前遗漏的广告与追踪域名
+||adstats.tencentmusic.com^
+||otheve.beacon.qq.com^
+||monitor.music.qq.com^
+||stat.y.qq.com^
+||tmead.y.qq.com^
+||oth.str.mdt.qq.com^
+||h.trace.qq.com^
+||p.l.qq.com^
+||us.l.qq.com^
+||tangram.e.qq.com^
+
+! ---------- 其他独立 App ----------
+||ad.12306.cn^
+||ad.51wnl.com^
+||ad.xunkids.com^
+||ad.gameley.com^
+||adm.funshion.com^
+||ad.hpplay.cn^
+||adc.hpplay.cn^
+||adcdn.hpplay.cn^
+||adeng.hpplay.cn^
+||adks.hpplay.cn^
+||ad-sdk-config.youdao.com^
+||ad.richmob.cn^
+||ad.shenshiads.com^
+||ad.shunchangzhixing.com^
+||ad.cyapi.cn^
+
+
+! ============================================================
+! 八、国内通用追踪 / 归因
+! ============================================================
+||adjust.cn^
+||aaid.umeng.com^
+||android.bugly.qq.com^
+||tracking.miui.com^
+||i6.weather.oppomobile.com^
+||apsrgeo.amap.com^
+
+
+! ============================================================
+! 九、Google / Alphabet 广告与统计
+! ============================================================
+||doubleclick.net^
+||doubleclick.com^
+||2mdn.net^
+||googlesyndication.com^
+||googleadservices.com^
+||googletagservices.com^
+||adsbygoogle.com^
+||adservice.google.com^
+||google-analytics.com^
+||googletagmanager.com^
+||c.admob.com^
+||mm.admob.com^
+||mmv.admob.com^
+||media.admob.com^
+||r.admob.com^
+||q.admob.com^
+
+
+! ============================================================
+! 十、Meta / Facebook Audience Network
+! ============================================================
+||connect.facebook.net^
+||an.facebook.com^
+||pixel.facebook.com^
+
+
+! ============================================================
+! 十一、Amazon 广告系统
+! ============================================================
+||amazon-adsystem.com^
+||assoc-amazon.com^
+||aaxads.com^
+
+
+! ============================================================
+! 十二、程序化广告交易平台 / SSP / DSP
+! ============================================================
+||adnxs.com^
+||rubiconproject.com^
+||openx.net^
+||pubmatic.com^
+||casalemedia.com^
+||contextweb.com^
+||indexexchange.com^
+||smartadserver.com^
+||sharethrough.com^
+||yieldmo.com^
+||sovrn.com^
+||gumgum.com^
+||triplelift.com^
+||33across.com^
+||bidswitch.net^
+||adsrvr.org^
+||advertising.com^
+||adform.net^
+||adroll.com^
+||spotxchange.com^
+||media.net^
+||districtm.io^
+||sitescout.com^
+||turn.com^
+||tribalfusion.com^
+||sonobi.com^
+||loopme.me^
+||zedo.com^
+||mgid.com^
+||revcontent.com^
+||content.ad^
+||content-ad.net^
+||zergnet.com^
+||zemanta.com^
+||teads.tv^
+||teads.com^
+||gravity.com^
+||newsmaxfeednetwork.com^
+
+
+! ============================================================
+! 十三、原生 / 内容推荐 / CNAME 伪装追踪广告
+! ============================================================
+||taboola.com^
+||outbrain.com^
+||outbrainimg.com^
+||2leep.com^
+||adblade.com^
+||adsnative.com^
+||adglare.net^
+
+
+! ============================================================
+! 十四、移动广告 SDK（国际）
+! ============================================================
+||applovin.com^
+||applvn.com^
+||unityads.unity3d.com^
+||ironsrc.com^
+||supersonicads.com^
+||vungle.com^
+||chartboost.com^
+||inmobi.com^
+||ads.inmobi.com^
+||config.inmobi.com^
+||smaato.net^
+||ad.smaato.net^
+||mopub.com^
+||adcolony.com^
+||fyber.com^
+||mintegral.com^
+||startappservice.com^
+||start.io^
+
+
+! ============================================================
+! 十五、Criteo（重定向广告）
+! ============================================================
+||criteo.com^
+||criteo.net^
+
+
+! ============================================================
+! 十六、广告验证 / 测量 / 可见性
+! ============================================================
+||adsafeprotected.com^
+||moatads.com^
+||moatpixel.com^
+||doubleverify.com^
+||serving-sys.com^
+||quantserve.com^
+||scorecardresearch.com^
+||comscore.com^
+
+
+! ============================================================
+! 十七、移动归因与追踪
+! ============================================================
+||appsflyer.com^
+||app.adjust.com^
+||go.adjust.com^
+||adjust.com^
+||branch.io^
+||cdn.branch.io^
+||kochava.com^
+||tenjin.io^
+||singular.net^
+
+
+! ============================================================
+! 十八、其他追踪 / 用户画像
+! ============================================================
+||mixpanel.com^
+||amplitude.com^
+||api2.amplitude.com^
+||segment.com^
+||segment.io^
+||heapanalytics.com^
+||hotjar.com^
+||fullstory.com^
+||logrocket.com^
+||bugsnag.com^
+||newrelic.com^
+||nr-data.net^
+||datadoghq-browser-agent.com^
+
+
+! ============================================================
+! 十九、日本 / 亚太区广告网络
+! ============================================================
+||i-mobile.co.jp^
+||microad.co.jp^
+||microad.jp^
+||microad.net^
+||nend.net^
+||fluct.jp^
+||genieesspv.jp^
+||gsspat.jp^
+||gssprt.jp^
+||impact-ad.jp^
+||logly.co.jp^
+||popin.cc^
+||socdm.com^
+||valuecommerce.com^
+||ziyu.net^
