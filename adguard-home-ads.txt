@@ -1,14 +1,21 @@
-! Title: 国内外广告精准拦截 (AdGuard Home 全平台完善版)
-! Description: 纯域名规则，在v1.4基础上补入爱奇艺/B站/QQ音乐的自有广告域名，并整合车来了规则
-! Version: 1.5
+! Title: 国内外广告精准拦截 (AdGuard Home v1.8)
+! Description: 在v1.7基础上补充国外常见成人网站广告网络/弹窗/重定向域名；仅拦截广告网络，不含成人站点主域
+! Version: 1.8
 ! Last modified: 2026-11-08
-! 语法依据: AdGuard DNS filtering syntax，核心格式 ||domain^
-! 兼容性: 不含 $third-party / domain= / 复杂正则，适配 AdGuard Home DNS 过滤层
-! 警告: 第7节中标注"有损"的规则可能影响对应平台的部分功能，导入后请观察
+! 语法依据: AdGuard DNS filtering syntax，核心格式 ||domain^，白名单 @@||domain^
+! 兼容性: 不含正则表达式 / $third-party / domain=，适配 AdGuard Home DNS 过滤层
+! 重要限制: YouTube、Twitch的视频广告与内容共用CDN，DNS层无法拦截；本列表未包含此类规则
 
 
 ! ============================================================
-! 一、字节跳动系（穿山甲 / 抖音 / 头条 / Gromore）
+! 〇、白名单（优先级最高，避免误杀正常功能）
+! ============================================================
+@@||amdc.m.taobao.com^
+@@||accscdn.m.taobao.com^
+
+
+! ============================================================
+! 一、字节跳动系（穿山甲 / 抖音 / 头条 / Gromore / 聚合SDK）
 ! ============================================================
 ||pangolin.snssdk.com^
 ||pangolin-sdk-toutiao.com^
@@ -40,6 +47,7 @@
 ||abtest-ch.snssdk.com^
 ||gromore.com^
 ||gromore.cn^
+||csjplatform.com^
 
 
 ! ============================================================
@@ -51,6 +59,7 @@
 ||q.i.gdt.qq.com^
 ||canvas.gdt.qq.com^
 ||pgdt.gtimg.cn^
+||qzs.gdtimg.com^
 ||pingma.qq.com^
 ||ad.qq.com^
 ||e.qq.com^
@@ -124,7 +133,7 @@
 ! ---------- vivo ----------
 ||ads-marketing-vivofs.vivo.com.cn^
 
-! ---------- 华为广告（仅限广告专用子域，不碰主域） ----------
+! ---------- 华为广告（仅限广告专用子域） ----------
 ||rnd-aresocean-commercial.huawei.com^
 ||rnd-cbgpas01.huawei.com^
 
@@ -138,7 +147,7 @@
 
 
 ! ============================================================
-! 六、其他国内广告联盟 / 广告 SDK
+! 六、其他国内广告联盟 / 广告 SDK / 推广渠道
 ! ============================================================
 ||open.e.kuaishou.com^
 ||addata.jd.com^
@@ -166,17 +175,26 @@
 ||ad.abchina.com^
 ||adcdn.pingan.com^
 
+! ---------- 聚合 / 推送 / 工具类 ----------
+||getui.com^
+||getui.cn^
+||doubleclick-cn.net^
+||ludashi.cn^
+||p2p.huya.com^
+||bsccdn.net^
+||ezze0ct.com^
+||hokkid5.com^
+
 
 ! ============================================================
 ! 七、国内独立 App 广告域名（含车来了/爱奇艺/B站/QQ音乐有损规则）
 ! ============================================================
 
-! ---------- 车来了（有损，观察核心查询功能） ----------
+! ---------- 车来了（有损） ----------
 ||atrace.chelaile.net.cn^
 ||logs.chelaile.net.cn^
 
-! ---------- 爱奇艺（有损，高风险，可能影响视频播放） ----------
-! 验证显示屏蔽其广告域名可能导致视频无法播放，务必谨慎
+! ---------- 爱奇艺（有损，高风险） ----------
 ||a.ckm.iqiyi.com^
 ||ad.m.iqiyi.com^
 ||afp.iqiyi.com^
@@ -185,14 +203,12 @@
 ||t7z.cupid.iqiyi.com^
 ||tpa-hcdn.iqiyi.com^
 
-! ---------- B站（有损，主要影响PCDN与部分广告接口） ----------
-! PCDN域名屏蔽后通常回落正常CDN；部分接口可能承载非广告功能
+! ---------- B站（有损，主要影响PCDN） ----------
 ||mcdn.bilivideo.cn^
 ||szbdyd.com^
 ||cm.bilibili.com^
 
 ! ---------- QQ音乐（有损，中等风险） ----------
-! 补入此前遗漏的广告与追踪域名
 ||adstats.tencentmusic.com^
 ||otheve.beacon.qq.com^
 ||monitor.music.qq.com^
@@ -323,6 +339,9 @@
 ||adblade.com^
 ||adsnative.com^
 ||adglare.net^
+||adobedc.net^
+||omtrdc.net^
+||everesttech.net^
 
 
 ! ============================================================
@@ -418,3 +437,140 @@
 ||socdm.com^
 ||valuecommerce.com^
 ||ziyu.net^
+
+
+! ============================================================
+! 二十、国外音乐 / 音频流媒体（独立广告域名）
+! ============================================================
+
+! ---------- Spotify ----------
+||adeventtracker.spotify.com^
+||ads-fa.spotify.com^
+||adclick.g.doublecklick.net^
+
+! ---------- SoundCloud ----------
+||ads.soundcloud.com^
+||promoted.soundcloud.com^
+||promoted.sndcdn.com^
+
+! ---------- Pandora ----------
+||adserver.pandora.com^
+
+
+! ============================================================
+! 二十一、国外视频 / 流媒体（部分平台有独立广告域）
+! ============================================================
+
+! ---------- Hulu ----------
+||hulu.sc.omtrdc.net^
+||huluaction.com^
+||cws-hulu.conviva.com^
+||live-mediashield-ava-hulustream-com.akamaized.net^
+
+! ---------- Roku ----------
+||cooper.logs.roku.com^
+||cloudservices.roku.com^
+
+
+! ============================================================
+! 二十二、国外社交平台广告端点
+! ============================================================
+
+! ---------- Twitter / X ----------
+||ads.x.com^
+||ads.twitter.com^
+
+! ---------- TikTok ----------
+||ads.tiktok.com^
+||business-api.tiktok.com^
+
+! ---------- Reddit ----------
+||events.reddit.com^
+||matrix.redditspace.com^
+
+
+! ============================================================
+! 二十三、国外新闻 / 内容网站广告域
+! ============================================================
+||adserver.clix.pt^
+||addevweb.com^
+||ads2.blastro.com^
+||adreach.me^
+||adsrv.me^
+
+
+! ============================================================
+! 二十四、国外常见成人网站广告网络 / 弹窗 / 重定向（v1.8 新增）
+! 说明: 仅拦截广告网络与广告分发域名，不包含成人站点主域
+! ============================================================
+
+! ---------- ExoClick 系 ----------
+||exoclick.com^
+||exoclick.net^
+||exosrv.com^
+||realsrv.com^
+||exdynsrv.com^
+
+! ---------- JuicyAds ----------
+||juicyads.com^
+||juicyads.net^
+
+! ---------- TrafficJunky ----------
+||trafficjunky.com^
+||trafficjunky.net^
+
+! ---------- TrafficFactory ----------
+||trafficfactory.com^
+||trafficfactory.biz^
+
+! ---------- TrafficStars / TSyndicate ----------
+||trafficstars.com^
+||trafficstars.net^
+||tsyndicate.com^
+
+! ---------- Adnium ----------
+||adnium.com^
+
+! ---------- AdXpansion ----------
+||adxpansion.com^
+||adxpansion.net^
+
+! ---------- PlugRush ----------
+||plugrush.com^
+||plugrush.net^
+
+! ---------- EroAdvertising ----------
+||eroadvertising.com^
+||ero-advertising.com^
+||ero-advertising.biz^
+
+! ---------- PopAds / PopCash ----------
+||popads.net^
+||popcash.net^
+
+! ---------- Clickadu ----------
+||clickadu.com^
+
+! ---------- PropellerAds ----------
+||propellerads.com^
+||propellerads.net^
+
+! ---------- HilltopAds ----------
+||hilltopads.net^
+||hilltopads.com^
+
+! ---------- Adsterra ----------
+||adsterra.com^
+
+! ---------- AdSpyglass ----------
+||adspyglass.com^
+
+! ---------- TrafficHaus ----------
+||traffichaus.com^
+
+! ---------- AdSupply ----------
+||adsupply.com^
+
+! ---------- 其他常见成人广告/推广网络 ----------
+||adultadnet.com^
+||adultforce.com^
